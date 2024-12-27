@@ -10,20 +10,25 @@ class App extends React.Component {
         { front: 'front1', back: 'back1' },
         { front: 'front2', back: 'back2' },
       ],
-      editor: true,
+      editor: true, 
     };
   }
 
-  addCard = card => {
-    const cards = this.state.cards.slice().concat(card);
+  addCard = (card) => {
+    const cards = [...this.state.cards, card];
     this.setState({ cards });
   };
-  deleteCard = index => {
-    const cards = this.state.cards.slice();
+
+  deleteCard = (index) => {
+    const cards = [...this.state.cards];
     cards.splice(index, 1);
     this.setState({ cards });
   };
-  switchMode = () => this.setState({ editor: !this.state.editor });
+
+  switchMode = () => {
+    this.setState((prevState) => ({ editor: !prevState.editor }));
+  };
+
   render() {
     if (this.state.editor) {
       return (
@@ -35,7 +40,12 @@ class App extends React.Component {
         />
       );
     } else {
-      return <CardViewer switchMode={this.switchMode} />;
+      return (
+        <CardViewer
+          cards={this.state.cards} 
+          switchMode={this.switchMode}
+        />
+      );
     }
   }
 }
