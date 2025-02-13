@@ -108,7 +108,7 @@ def main():
     print(f"Decoding {iterations} times: {dec_time_json:.6f} seconds")
     print()
 
-    print("Custom (Binary) Implementation:")
+    print("Binary (Custom) Implementation:")
     print(f"Average size: {avg_size_bin:.2f} bytes")
     print(f"Encoding {iterations} times: {enc_time_bin:.6f} seconds")
     print(f"Decoding {iterations} times: {dec_time_bin:.6f} seconds")
